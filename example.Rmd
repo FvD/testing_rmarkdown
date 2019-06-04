@@ -1,0 +1,41 @@
+---
+title: "Testing Rmarkdown"
+author: "FvD"
+date: "6/3/2019"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(testthat)
+```
+
+## Inline tests
+
+```{r error=TRUE}
+my_vec <- c(1, 3, 4, 5)
+stopifnot(length(my_vec == 6))
+```
+
+
+```{r}
+my_vec <- c(1, 3, 4, 5)
+stopifnot(3 %in% my_vec)
+```
+
+## testthat tests
+
+
+```{r error=TRUE}
+my_vec <- c(1, 3, 4, 5)
+expect_equal(length(my_vec), 6)
+```
+
+```{r error=TRUE}
+my_vec <- c(1, 3, 4, 5)
+expect_true(length(my_vec) == 6)
+```
